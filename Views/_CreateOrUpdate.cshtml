@@ -1,0 +1,25 @@
+﻿@using Nop.Services.Events
+@using Nop.Web.Framework.Events
+@model Nop.Web.Areas.Admin.Models.Localization.LanguageModel
+@inject IEventPublisher eventPublisher
+
+<div asp-validation-summary="All"></div>
+<input asp-for="Id" type="hidden" />
+
+<div class="content">
+    <div class="form-horizontal">
+        <nop-tabs id="language-edit">
+            <nop-tab asp-name="tab-resources" asp-title="@T("Admin.Configuration.Languages.Resources")" asp-default="true">@await Html.PartialAsync("~/Plugins/Localized.Javascript/Views/_CreateOrUpdate.Resources.cshtml", Model)</nop-tab>
+        </nop-tabs>
+    </div>
+</div>
+
+@{
+    //custom tabs
+    var eventMessage = new AdminTabStripCreated(this.Html, "language-edit");
+    eventPublisher.Publish(eventMessage);
+    foreach (var eventBlock in eventMessage.BlocksToRender)
+    {
+        @eventBlock
+    }
+}

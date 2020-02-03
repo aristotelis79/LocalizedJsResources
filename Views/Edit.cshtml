@@ -1,0 +1,31 @@
+﻿@model Nop.Web.Areas.Admin.Models.Localization.LanguageModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    //page title
+    ViewBag.Title = T("Admin.Configuration.Languages.EditLanguageDetails").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("Admin.Localized.Javascript");
+}
+
+
+<form asp-controller="LocalizedJavascript" asp-action="Edit" method="post">
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Configuration.Languages.EditLanguageDetails") - @Model.Name
+            <small>
+                <i class="fa fa-arrow-circle-left"></i>
+                <a asp-action="List">@T("Admin.Configuration.Languages.BackToList")</a>
+            </small>
+        </h1>
+        @*<div class="pull-right">
+                <a asp-action="ExportXml" asp-route-id="@Model.Id" class="btn bg-green">
+                    <i class="fa fa-download"></i>
+                    @T("Admin.Configuration.Languages.Export")
+                </a>
+                @await Component.InvokeAsync("AdminWidget", new { widgetZone = "admin_language_details_buttons", additionalData = Model.Id })
+            </div>*@
+    </div>
+    @await Html.PartialAsync("~/Plugins/Localized.Javascript/Views/_CreateOrUpdate.cshtml", Model)
+</form>

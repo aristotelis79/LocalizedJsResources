@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Localized Javascript Resources",
+  "SystemName": "Localized.Javascript",
+  "Version": "1.02",
+  "SupportedVersions": [ "4.00" ],
+  "Author": "Aristotelis Papantonis",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.Localized.Javascript.dll",
+  "Description": "This plugin allows you to Localized Javascript Resources"
+}
